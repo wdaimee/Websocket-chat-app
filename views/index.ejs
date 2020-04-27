@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Realtime Chat with Socket.io</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <header><span>Realtime-Chat</span><button>clear</button></header>
+    <section id="chat-box"></section>
+    <section>
+        <textarea class='text-area' rows="4" cols="50"></textarea>
+        <button type="submit">Send Message</button>
+    </section>
+    <footer><ul class="users"></ul></footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/app.js"></script>
+  </body>
   </body>
 </html>
