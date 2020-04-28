@@ -5,11 +5,12 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <header><span>Realtime-Chat</span><button>clear</button></header>
-    <section id="chat-box"></section>
+    <header><span>Realtime-Chat</span><button class="clear-btn">clear</button></header>
+    <section class="chat-box">
+    </section>
     <section>
         <textarea class='text-area' rows="4" cols="50"></textarea>
-        <button type="submit">Send Message</button>
+        <button class="send-btn" type="submit">Send Message</button>
     </section>
     <footer><ul class="users"></ul></footer>
     <script src="/socket.io/socket.io.js"></script>
