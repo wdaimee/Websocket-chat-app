@@ -20,6 +20,17 @@ clearBtn.addEventListener('click', function() {
     chatBox.innerHTML = "";
 });
 
+do {
+    username = getUsername();
+}   while (username.length < 2);
+  
+// socket.emit('register-player', initials);
+  
+function getUsername() {
+    var input = prompt("Please enter your username");
+    return input ? input : '';
+}
+
 function addMessage({newMessage}) {
     let newPara = document.createElement('p');
     let text = document.createTextNode(`${newMessage}`)
