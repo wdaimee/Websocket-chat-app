@@ -6,13 +6,21 @@ const socket = io();
 
 console.log(socket);
 
-sendMessageBtn.addEventListener('click', () => addMessage())
+socket.on('add-message', function(data) {
+    addMessage(data);
+});
+
+sendMessageBtn.addEventListener('click', function(evt) {
+    socket.emit('add-message', {
+        newMessage: textArea.value
+    });
+});
+
 clearBtn.addEventListener('click', function() {
     chatBox.innerHTML = "";
 });
 
-function addMessage() {
-    let newMessage = textArea.value;
+function addMessage({newMessage}) {
     let newPara = document.createElement('p');
     let text = document.createTextNode(`${newMessage}`)
     newPara.appendChild(text);
