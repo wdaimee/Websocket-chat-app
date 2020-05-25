@@ -3,6 +3,7 @@ const textArea = document.querySelector('.text-area');
 const chatBox = document.querySelector('.chat-box');
 const clearBtn = document.querySelector('.clear-btn');
 const socket = io();
+let username;
 
 //confirm connection of frontend to socket
 console.log(socket);
@@ -40,7 +41,7 @@ function getUsername() {
 //function for adding a message, create a <p> tag and push to chatBox section
 function addMessage({newMessage}) {
     let newPara = document.createElement('p');
-    let text = document.createTextNode(`${newMessage}`)
+    let text = document.createTextNode(`${username}: ${newMessage}`)
     newPara.appendChild(text);
     chatBox.appendChild(newPara);
     textArea.value = '';
