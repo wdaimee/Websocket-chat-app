@@ -3,6 +3,8 @@ const textArea = document.querySelector('.text-area');
 const chatBox = document.querySelector('.chat-box');
 const clearBtn = document.querySelector('.clear-btn');
 const usersArea = document.querySelector('.users');
+const userAddForm = document.querySelector('.username-form');
+const usernameVal = document.querySelector('.username-input');
 const socket = io();
 let username;
 
@@ -34,17 +36,16 @@ clearBtn.addEventListener('click', function() {
     chatBox.innerHTML = "";
 });
 
-//prompt user for username
-do {
-    username = getUsername();
-}   while (username.length < 2);
-socket.emit('register-user', username);
- 
-//get user's username
-function getUsername() {
-    var input = prompt("Please enter your username");
-    return input ? input : '';
-}
+//event handler to get username
+userAddForm.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    username = usernameVal.value;
+    console.log(username)
+    socket.emit('register-user', {
+        username
+    });
+    hideModal();
+});
 
 //function for adding a message, create a <p> tag and push to chatBox section
 function addMessage({newMessage, user}) {
@@ -53,4 +54,13 @@ function addMessage({newMessage, user}) {
     newPara.appendChild(text);
     chatBox.appendChild(newPara);
     textArea.value = '';
+}
+
+//show modal for login on page load
+$(document).ready(function() {
+    $('#modal-user-login').modal('show');
+});
+
+function hideModal() {
+    $('#modal-user-login').modal('hide');
 }

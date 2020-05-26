@@ -16,7 +16,7 @@ io.on('connection', function(socket) {
     });
 
     //Add new users to users object and emit to client side
-    socket.on('register-user', function(username) {
+    socket.on('register-user', function({ username }) {
         users[socket.id] = username;
         io.emit('update-user-list', Object.values(users));
     });
