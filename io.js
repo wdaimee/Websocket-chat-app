@@ -12,7 +12,7 @@ io.on('connection', function(socket) {
         io.emit('add-message', {
             newMessage: data.newMessage,
             user: users[data.user],
-            currentUser: socket.id
+            userSocketId: socket.id
         });
     });
 

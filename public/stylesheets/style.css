@@ -58,8 +58,14 @@ a {
 
 .current-user-msg {
   background: green;
-  float: right;
+  margin-left: auto;
 }
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .chat-box p {
   margin: 10px;
