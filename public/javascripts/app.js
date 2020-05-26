@@ -18,7 +18,6 @@ socket.on('add-message', function(data) {
 
 //Listen for when the users list has changed
 socket.on('update-user-list', function(data) {
-    console.log(data)
     let userList = '<li>' + data.users.join('</li><li>') + '</li>';
     usersArea.innerHTML = userList;
 
@@ -28,12 +27,14 @@ socket.on('update-user-list', function(data) {
 })
 
 //event handle for when send message button pressed, send add-message data to server
-sendMessageBtn.addEventListener('click', function(evt) {
-    socket.emit('add-message', {
-        newMessage: textArea.value,
-        user: socket.id
-    });
-});
+sendMessageBtn.addEventListener('click', sendMessageToIo);
+
+//event handler for when enter is pressed in text input
+textArea.addEventListener('keydown', function(evt) {
+    if(evt.keyCode === 13) {
+        sendMessageToIo();
+    }
+})
 
 //event handler for clearing the screen
 clearBtn.addEventListener('click', function() {
@@ -51,21 +52,32 @@ userAddForm.addEventListener('submit', function(evt) {
     hideModal();
 });
 
-//function for adding a message, create a <p> tag and push to chatBox section
+//function for adding a message, create a bootstrap card and push to chatBox section
 function addMessage({newMessage, user}) {
-    let newPara = document.createElement('p');
-    let text = document.createTextNode(`${user}: ${newMessage}`);
+    const newDiv = document.createElement('div');
+    const newPara = document.createElement('p');
+    const text = document.createTextNode(`${user}: ${newMessage}`);
+    newDiv.classList.add('card');
     newPara.appendChild(text);
-    chatBox.appendChild(newPara);
+    newDiv.appendChild(newPara);
+    chatBox.appendChild(newDiv);
     textArea.value = '';
 }
 
 //add a message when a user disconnects
 function addDisconnectedMessage(user) {
-    let newPara = document.createElement('p');
-    let message = document.createTextNode(`${user} has disconnected`);
+    const newPara = document.createElement('p');
+    const message = document.createTextNode(`${user} has disconnected`);
     newPara.appendChild(message);
     chatBox.appendChild(newPara);
+}
+
+//function to send message to io when keypressed or send btn pressed
+function sendMessageToIo() {
+    socket.emit('add-message', {
+        newMessage: textArea.value,
+        user: socket.id
+    });
 }
 
 //show modal for login on page load

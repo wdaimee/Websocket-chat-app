@@ -1,8 +1,42 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  width: 100vw;
 }
 
 a {
   color: #00B7FF;
+}
+
+.text-area {
+  border: 1px solid black;
+}
+
+.btn {
+  display: inline-block;
+}
+
+.chat-box {
+  height: 50vh;
+}
+
+.loggedin-users {
+  background: grey;
+  height: 95vh;
+  margin: 0;
+}
+
+.card {
+  background: blue;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+}
+
+.chat-box p {
+  margin: 10px;
 }

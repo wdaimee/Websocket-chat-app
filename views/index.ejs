@@ -9,17 +9,23 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <header><span>Realtime-Chat</span><button class="clear-btn">clear</button></header>
-    <section class="chat-box">
-    </section>
-    <section>
-        <textarea class='text-area' rows="4" cols="50"></textarea>
-        <button class="send-btn" type="submit">Send Message</button>
-    </section>
-    <section class="loggedin-users">
-      <p>Logged In Users:</p>
-      <ul class="users"></ul>
-    </section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Websocket Chat</a>
+    </nav>
+    <div class="container-fluid">
+      <div class="row flex-grow-1">
+        <div class="col-3 loggedin-users">
+          <p>Logged In Users:</p>
+          <ul class="users"></ul>
+        </div> 
+        <div class="col-9 chat-area">
+          <div class="chat-box"></div>
+          <input type="text" class='text-area'>
+          <button class="btn btn-success send-btn" type="submit">Send Message</button>
+          <button class="btn btn-primary clear-btn">Clear</button>
+        </div>  
+      </div>
+    </div>
     <section class="modal-input">
       <div id="modal-user-login" class="modal fade">
         <div class="modal-dialog" role="document">
