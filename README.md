@@ -15,6 +15,6 @@ This project is a websocket chat app between two or more clients. Node.js/Expres
 - Code program for chatting between multiple clients
     - ~~Add usernames to the chat~~
     - ~~Display which users are on the chat~~
-    - Program clear button
+    - ~~Program clear button~~
     - Program message to display when user has ended chat
 - Stylize frontend

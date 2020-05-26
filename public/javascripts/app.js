@@ -19,8 +19,12 @@ socket.on('add-message', function(data) {
 //Listen for when the users list has changed
 socket.on('update-user-list', function(data) {
     console.log(data)
-    let userList = '<li>' + data.join('</li><li>') + '</li>';
+    let userList = '<li>' + data.users.join('</li><li>') + '</li>';
     usersArea.innerHTML = userList;
+
+    if(data.deletedUser) {
+        addDisconnectedMessage(data.deletedUser);
+    }
 })
 
 //event handle for when send message button pressed, send add-message data to server
@@ -50,10 +54,18 @@ userAddForm.addEventListener('submit', function(evt) {
 //function for adding a message, create a <p> tag and push to chatBox section
 function addMessage({newMessage, user}) {
     let newPara = document.createElement('p');
-    let text = document.createTextNode(`${user}: ${newMessage}`)
+    let text = document.createTextNode(`${user}: ${newMessage}`);
     newPara.appendChild(text);
     chatBox.appendChild(newPara);
     textArea.value = '';
+}
+
+//add a message when a user disconnects
+function addDisconnectedMessage(user) {
+    let newPara = document.createElement('p');
+    let message = document.createTextNode(`${user} has disconnected`);
+    newPara.appendChild(message);
+    chatBox.appendChild(newPara);
 }
 
 //show modal for login on page load

@@ -18,13 +18,19 @@ io.on('connection', function(socket) {
     //Add new users to users object and emit to client side
     socket.on('register-user', function({ username }) {
         users[socket.id] = username;
-        io.emit('update-user-list', Object.values(users));
+        io.emit('update-user-list', {
+            users: Object.values(users)
+        });
     });
 
     //Listener for when user disconnects from chat
     socket.on('disconnect', function() {
+        const deletedUser = users[socket.id];
         delete users[socket.id];
-        io.emit('update-user-list', Object.values(users));
+        io.emit('update-user-list', {
+            users: Object.values(users),
+            deletedUser
+        });
     });
 });
 
