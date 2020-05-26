@@ -53,11 +53,15 @@ userAddForm.addEventListener('submit', function(evt) {
 });
 
 //function for adding a message, create a bootstrap card and push to chatBox section
-function addMessage({newMessage, user}) {
+function addMessage({newMessage, user, currentUser}) {
     const newDiv = document.createElement('div');
     const newPara = document.createElement('p');
     const text = document.createTextNode(`${user}: ${newMessage}`);
     newDiv.classList.add('card');
+    //if logged in user added the message, apply the current-user-msg class
+    if (socket.id === currentUser) {
+        newDiv.classList.add('current-user-msg');
+    }
     newPara.appendChild(text);
     newDiv.appendChild(newPara);
     chatBox.appendChild(newDiv);

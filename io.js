@@ -11,7 +11,8 @@ io.on('connection', function(socket) {
     socket.on('add-message', function(data) {
         io.emit('add-message', {
             newMessage: data.newMessage,
-            user: users[data.user]
+            user: users[data.user],
+            currentUser: socket.id
         });
     });
 

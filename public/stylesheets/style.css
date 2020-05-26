@@ -52,6 +52,13 @@ a {
   padding: 10px;
   margin: 10px;
   color: white;
+  width: 90%;
+  float: left;
+}
+
+.current-user-msg {
+  background: green;
+  float: right;
 }
 
 .chat-box p {
