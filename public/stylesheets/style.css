@@ -14,20 +14,37 @@ a {
 
 .text-area {
   border: 1px solid black;
+  width: 60vw;
+  margin-right: 5px;
 }
 
 .btn {
   display: inline-block;
 }
 
+.chat-area {
+  padding: 0;
+}
+
 .chat-box {
-  height: 50vh;
+  height: 90vh;
+  overflow-y: scroll;
 }
 
 .loggedin-users {
   background: grey;
   height: 95vh;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loggedin-title {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  margin: 1em;
 }
 
 .card {
@@ -39,4 +56,8 @@ a {
 
 .chat-box p {
   margin: 10px;
+}
+
+li {
+  font-size: 20px;
 }
