@@ -1,13 +1,19 @@
 # Websocket Chat with Express.js
 
+![Screenshot](https://i.imgur.com/ghYnuwC.png)
+
+Visit the app here:
+ [https://thawing-falls-22320.herokuapp.com/](https://thawing-falls-22320.herokuapp.com/)
+
 ### About
-This project is a websocket chat app between two or more clients. Node.js/Express.js wase used as the backend and socket.io was used for implementing websocket and communication between multiple clients. The Frontend was completed with ejs.
+This project is a websocket chat app between two or more clients. Node.js/Express.js wase used as the backend and <span>socket.io</span> was used for implementing websocket and communication between multiple clients. The Frontend was completed using ejs.
 
 ### List of Technologies Used
 - Node.js
 - Express.js
-- Socket.io
+- <div>Socket.io</div>
 - JavaScript
+- Bootstrap 4
 
 ### To Do:
 - ~~Create Node.js backend~~
@@ -17,4 +23,4 @@ This project is a websocket chat app between two or more clients. Node.js/Expres
     - ~~Display which users are on the chat~~
     - ~~Program clear button~~
     - ~~Program message to display when user has ended chat~~
-- Stylize frontend
+- ~~Stylize frontend~~
